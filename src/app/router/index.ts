@@ -1,11 +1,12 @@
-import { Router } from "express";
+import { Router } from 'express';
+import { ProductRoutes } from '../modules/Product/product.router';
 
 const router = Router();
 
 const moduleRoutes = [
   {
-    path: "/user",
-    route: "a",
+    path: '/api',
+    route: ProductRoutes,
   },
 ];
 
