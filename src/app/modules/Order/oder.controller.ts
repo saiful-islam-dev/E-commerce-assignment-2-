@@ -53,7 +53,7 @@ const updateOrder = catchAsync(async (req: Request, res: Response) => {
 
 const deleteOrder = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-    const result =  await OrderService.deleteOrderFromDB(id);
+  const result = await OrderService.deleteOrderFromDB(id);
 
   sendResponse(res, {
     statusCode: 200,

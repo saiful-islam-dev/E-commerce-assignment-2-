@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { ProductRoutes } from '../modules/Product/product.router';
+import { OrderRoutes } from '../modules/Order/order.router';
 
 const router = Router();
 
@@ -7,6 +8,10 @@ const moduleRoutes = [
   {
     path: '/api',
     route: ProductRoutes,
+  },
+  {
+    path: '/api',
+    route: OrderRoutes,
   },
 ];
 

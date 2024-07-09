@@ -1,28 +1,29 @@
- // Assuming this is your Mongoose model
-
-import { IProduct } from "./product.interface";
-import { Product } from "./product.mode";
+import { IProduct } from './product.interface';
+import { Product } from './product.mode';
 
 const createProductIntoDB = async (productData: IProduct) => {
-  const product = new Product(productData);
-  await product.save();
-  return product;
+  const result = await Product.create(productData);
+  return result;
 };
 
 const getAllProductsFromDB = async () => {
-  return Product.find();
+  const result = await Product.find();
+  return result;
 };
 
 const getProductByIdFromDB = async (id: string) => {
-  return Product.findById(id);
+  const result = await Product.findById(id);
+  return result;
 };
 
 const updateProductInDB = async (id: string, updateData: Partial<IProduct>) => {
-  return Product.findByIdAndUpdate(id, updateData, { new: true });
+  const result = await Product.findByIdAndUpdate(id, updateData, { new: true });
+  return result;
 };
 
 const deleteProductFromDB = async (id: string) => {
-  return Product.findByIdAndDelete(id);
+  const result = await Product.findByIdAndDelete(id);
+  return result;
 };
 
 export const ProductService = {
