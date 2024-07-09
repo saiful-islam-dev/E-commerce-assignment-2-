@@ -28,6 +28,7 @@ const createOrderIntoDB = async (orderData: IOrder) => {
 
   // Create the order
   const order = {
+    email: orderData.email,
     productId: orderData.productId,
     quantity: orderData.quantity,
     totalAmount: totalAmount,
@@ -43,30 +44,31 @@ const createOrderIntoDB = async (orderData: IOrder) => {
   return result;
 };
 
-const getAllOrdersFromDB = async () => {
-  const result = await Order.find();
-  return result;
+const getAllOrdersFromDB = async (email?: string) => {
+  const query = email ? { email } : {};
+  const orders = await Order.find(query);
+  return orders;
 };
 
-const getOrderByIdFromDB = async (id: string) => {
-  const result = await Order.findById(id);
-  return result;
-};
+// const getOrderByIdFromDB = async (id: string) => {
+//   const result = await Order.findById(id);
+//   return result;
+// };
 
-const updateOrderInDB = async (id: string, updateData: Partial<IOrder>) => {
-  const result = await Order.findByIdAndUpdate(id, updateData, { new: true });
-  return result;
-};
+// const updateOrderInDB = async (id: string, updateData: Partial<IOrder>) => {
+//   const result = await Order.findByIdAndUpdate(id, updateData, { new: true });
+//   return result;
+// };
 
-const deleteOrderFromDB = async (id: string) => {
-  const result = await Order.findByIdAndDelete(id);
-  return result;
-};
+// const deleteOrderFromDB = async (id: string) => {
+//   const result = await Order.findByIdAndDelete(id);
+//   return result;
+// };
 
 export const OrderService = {
   createOrderIntoDB,
   getAllOrdersFromDB,
-  getOrderByIdFromDB,
-  updateOrderInDB,
-  deleteOrderFromDB,
+  // getOrderByIdFromDB,
+  // updateOrderInDB,
+  // deleteOrderFromDB,
 };

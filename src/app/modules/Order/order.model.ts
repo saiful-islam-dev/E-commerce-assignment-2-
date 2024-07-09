@@ -3,6 +3,7 @@ import { IOrder } from './oder.interface';
 
 const OrderSchema: Schema = new Schema(
   {
+    email: { type: String, required: true },
     productId: { type: Schema.Types.ObjectId, ref: 'Product', required: true },
     quantity: { type: Number, required: true },
     totalAmount: { type: Number, required: true },

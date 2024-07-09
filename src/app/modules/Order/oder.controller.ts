@@ -16,57 +16,59 @@ const addAnOrder = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getAllOrders = catchAsync(async (req: Request, res: Response) => {
-  const result = await OrderService.getAllOrdersFromDB();
+  const email = req.query.email as string;
+
+  const result = await OrderService.getAllOrdersFromDB(email);
 
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: 'Orders retrieved successfully',
+    message: 'Orders fetched successfully!',
     data: result,
   });
 });
 
-const getOrderById = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const result = await OrderService.getOrderByIdFromDB(id);
+// const getOrderById = catchAsync(async (req: Request, res: Response) => {
+//   const { id } = req.params;
+//   const result = await OrderService.getOrderByIdFromDB(id);
 
-  sendResponse(res, {
-    statusCode: 200,
-    success: true,
-    message: 'Order retrieved successfully',
-    data: result,
-  });
-});
+//   sendResponse(res, {
+//     statusCode: 200,
+//     success: true,
+//     message: 'Order retrieved successfully',
+//     data: result,
+//   });
+// });
 
-const updateOrder = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const updateData = req.body;
-  const result = await OrderService.updateOrderInDB(id, updateData);
+// const updateOrder = catchAsync(async (req: Request, res: Response) => {
+//   const { id } = req.params;
+//   const updateData = req.body;
+//   const result = await OrderService.updateOrderInDB(id, updateData);
 
-  sendResponse(res, {
-    statusCode: 200,
-    success: true,
-    message: 'Order updated successfully',
-    data: result,
-  });
-});
+//   sendResponse(res, {
+//     statusCode: 200,
+//     success: true,
+//     message: 'Order updated successfully',
+//     data: result,
+//   });
+// });
 
-const deleteOrder = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const result = await OrderService.deleteOrderFromDB(id);
+// const deleteOrder = catchAsync(async (req: Request, res: Response) => {
+//   const { id } = req.params;
+//   const result = await OrderService.deleteOrderFromDB(id);
 
-  sendResponse(res, {
-    statusCode: 200,
-    success: true,
-    message: 'Order deleted successfully',
-    data: result,
-  });
-});
+//   sendResponse(res, {
+//     statusCode: 200,
+//     success: true,
+//     message: 'Order deleted successfully',
+//     data: result,
+//   });
+// });
 
 export const OrderController = {
   addAnOrder,
   getAllOrders,
-  getOrderById,
-  updateOrder,
-  deleteOrder,
+  // getOrderById,
+  // updateOrder,
+  // deleteOrder,
 };
