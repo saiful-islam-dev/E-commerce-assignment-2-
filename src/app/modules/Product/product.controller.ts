@@ -9,22 +9,28 @@ const addAProduct = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: 201,
     success: true,
-    message: 'Product created successfully',
+    message: 'Product created successfully!',
     data: result,
   });
 });
 
 const getAllProducts = catchAsync(async (req, res) => {
   const { searchTerm } = req.query;
-  const result = await ProductService.getAllProductsFromDB(searchTerm as string);
+  const result = await ProductService.getAllProductsFromDB(
+    searchTerm as string,
+  );
+
+  let message = 'All products fetched successfully!';
+  if (searchTerm) {
+    message = `Products matching search term '${searchTerm}' fetched successfully!`;
+  }
 
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: `Products matching search term '${searchTerm}' fetched successfully!`,
+    message,
     data: result,
   });
-
 });
 
 const getProductById = catchAsync(async (req, res) => {
@@ -34,7 +40,7 @@ const getProductById = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: 'Product retrieved successfully',
+    message: 'Product fetched successfully!',
     data: result,
   });
 });
@@ -47,7 +53,7 @@ const updateProduct = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: 'Product updated successfully',
+    message: 'Product updated successfully!',
     data: result,
   });
 });
@@ -59,7 +65,7 @@ const deleteProduct = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: 'Product deleted successfully',
+    message: 'Product deleted successfully!',
     data: result,
   });
 });

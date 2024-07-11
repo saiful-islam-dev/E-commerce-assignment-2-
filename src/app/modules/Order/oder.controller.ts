@@ -10,7 +10,7 @@ const addAnOrder = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: 201,
     success: true,
-    message: 'Order created successfully',
+    message: 'Order created successfully!',
     data: result,
   });
 });
@@ -20,15 +20,18 @@ const getAllOrders = catchAsync(async (req: Request, res: Response) => {
 
   const result = await OrderService.getAllOrdersFromDB(email);
 
+  let message = 'All orders fetched successfully!';
+  if (email) {
+    message = `Orders fetched successfully for user email '${email}'!`;
+  }
+
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: 'Orders fetched successfully!',
+    message,
     data: result,
   });
 });
-
-
 
 // Some extra code for later use
 // const getOrderById = catchAsync(async (req: Request, res: Response) => {

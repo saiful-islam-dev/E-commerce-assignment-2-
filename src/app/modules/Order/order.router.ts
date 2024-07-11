@@ -5,10 +5,13 @@ import { createOrderSchema } from './order.validation';
 
 const router = express.Router();
 
-router.post('/orders', validateRequest(createOrderSchema),OrderController.addAnOrder);
+router.post(
+  '/orders',
+  validateRequest(createOrderSchema),
+  OrderController.addAnOrder,
+);
 
 router.get('/orders', OrderController.getAllOrders);
-
 
 // Some extra route for the future use
 // // Done

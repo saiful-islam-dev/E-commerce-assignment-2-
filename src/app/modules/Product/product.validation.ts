@@ -18,7 +18,6 @@ export const productSchemaZod = z.object({
   }),
 });
 
-
 export const updateProductSchemaZod = z.object({
   name: z.string().min(1).optional(),
   description: z.string().optional(),
