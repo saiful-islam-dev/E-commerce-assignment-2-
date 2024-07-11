@@ -50,6 +50,8 @@ const getAllOrdersFromDB = async (email?: string) => {
   return orders;
 };
 
+// Some extra service for the future use
+
 // const getOrderByIdFromDB = async (id: string) => {
 //   const result = await Order.findById(id);
 //   return result;
@@ -68,7 +70,4 @@ const getAllOrdersFromDB = async (email?: string) => {
 export const OrderService = {
   createOrderIntoDB,
   getAllOrdersFromDB,
-  // getOrderByIdFromDB,
-  // updateOrderInDB,
-  // deleteOrderFromDB,
 };

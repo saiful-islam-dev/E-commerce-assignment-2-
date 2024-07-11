@@ -28,6 +28,9 @@ const getAllOrders = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+
+
+// Some extra code for later use
 // const getOrderById = catchAsync(async (req: Request, res: Response) => {
 //   const { id } = req.params;
 //   const result = await OrderService.getOrderByIdFromDB(id);
@@ -68,7 +71,4 @@ const getAllOrders = catchAsync(async (req: Request, res: Response) => {
 export const OrderController = {
   addAnOrder,
   getAllOrders,
-  // getOrderById,
-  // updateOrder,
-  // deleteOrder,
 };

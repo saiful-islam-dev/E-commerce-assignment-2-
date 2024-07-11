@@ -15,14 +15,16 @@ const addAProduct = catchAsync(async (req, res) => {
 });
 
 const getAllProducts = catchAsync(async (req, res) => {
-  const result = await ProductService.getAllProductsFromDB();
+  const { searchTerm } = req.query;
+  const result = await ProductService.getAllProductsFromDB(searchTerm as string);
 
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: 'Products retrieved successfully',
+    message: `Products matching search term '${searchTerm}' fetched successfully!`,
     data: result,
   });
+
 });
 
 const getProductById = catchAsync(async (req, res) => {

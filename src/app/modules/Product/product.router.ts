@@ -1,21 +1,26 @@
 import express from 'express';
 import { ProductController } from './product.controller';
+import validateRequest from '../../middlewares/validateRequest';
+import { productSchemaZod, updateProductSchemaZod } from './product.validation';
 
 const router = express.Router();
 
-// Done
-router.post('/products', ProductController.addAProduct);
+router.post(
+  '/products',
+  validateRequest(productSchemaZod),
+  ProductController.addAProduct,
+);
 
-// Done
 router.get('/products', ProductController.getAllProducts);
 
-// Done
 router.get('/products/:id', ProductController.getProductById);
 
-// Done
-router.put('/products/:id', ProductController.updateProduct);
+router.put(
+  '/products/:id',
+  validateRequest(updateProductSchemaZod),
+  ProductController.updateProduct,
+);
 
-// Done
 router.delete('/products/:id', ProductController.deleteProduct);
 
 export const ProductRoutes = router;
